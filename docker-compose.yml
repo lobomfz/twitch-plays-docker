@@ -1,0 +1,30 @@
+version: "3"
+services:
+  tplays:
+    build:
+      context: .
+      args:
+        CC: ${CC}
+    environment:
+      - CHANNEL=${CHANNEL}
+      - CLIENT_ID=${CLIENT_ID}
+      - CLIENT_SECRET=${CLIENT_SECRET}
+      - ACCESS_TOKEN=${ACCESS_TOKEN}
+      - REFRESH_TOKEN=${REFRESH_TOKEN}
+      - GAME_FILE=${GAME_FILE}
+    ports:
+      - "6080:6080"
+      - "5910:5900"
+      - "8554:8554/tcp"
+      - "1935:1935"
+    devices:
+      - "/dev/dri:/dev/dri"
+    shm_size: "2gb"
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    volumes:
+      - ./bot:/home/user/bot
+      - ./archive:/home/user/archive
+      - local:/home/user/.local
+volumes:
+  local:

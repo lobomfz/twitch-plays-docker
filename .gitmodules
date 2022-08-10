@@ -1,0 +1,3 @@
+[submodule "twitch-plays"]
+	path = twitch-plays
+	url = https://github.com/lobomfz/twitch-plays
