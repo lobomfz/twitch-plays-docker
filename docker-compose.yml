@@ -23,7 +23,7 @@ services:
     extra_hosts:
       - "host.docker.internal:host-gateway"
     volumes:
-      - ./bot:/home/user/bot
+      - ./twitch-plays:/home/user/twitch-plays
       - ./archive:/home/user/archive
       - local:/home/user/.local
 volumes:
