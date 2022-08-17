@@ -4,7 +4,8 @@ services:
     build:
       context: .
       args:
-        CC: ${CC}
+        COUNTRY_CODE: ${COUNTRY_CODE}
+        DISPLAY: ${DISPLAY}
     environment:
       - CHANNEL=${CHANNEL}
       - CLIENT_ID=${CLIENT_ID}
@@ -12,13 +13,6 @@ services:
       - ACCESS_TOKEN=${ACCESS_TOKEN}
       - REFRESH_TOKEN=${REFRESH_TOKEN}
       - GAME_FILE=${GAME_FILE}
-    ports:
-      - "6080:6080"
-      - "5910:5900"
-      - "8554:8554/tcp"
-      - "1935:1935"
-    devices:
-      - "/dev/dri:/dev/dri"
     shm_size: "2gb"
     extra_hosts:
       - "host.docker.internal:host-gateway"
@@ -26,5 +20,6 @@ services:
       - ./twitch-plays:/home/user/twitch-plays
       - ./archive:/home/user/archive
       - local:/home/user/.local
+      - /tmp/.X11-unix:/tmp/.X11-unix
 volumes:
   local:
